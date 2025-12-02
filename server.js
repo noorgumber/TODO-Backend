@@ -14,12 +14,9 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch(() => console.log(err));
 
-const Todo = mongoose.model(
-  "Todo",
-  new mongoose.Schema({
-    text: String,
-  })
-);
+const Todo = mongoose.model("Todo", new mongoose.schema({
+  text:String
+}));
 
 app.get("/todos", async (req, res) => {
   res.json(await Todo.find());
@@ -37,4 +34,4 @@ app.delete("/todo/:id", async(req,res)=>{
 
 app.listen(process.env.PORT, () =>
   console.log("Server running on port", process.env.PORT)
-);
+)
